@@ -1,0 +1,138 @@
+<Space@BoxLayout>:
+    size_hint: 1, None
+    height: 1
+
+
+<Item@MDCard>:
+    source: ""
+    title: ""
+    size_hint: 1, None
+    height: self.minimum_height
+    elevation: 10
+    radius: [dp(5)]
+    ripple_behavior: True
+    FitImage:
+        source: root.source
+        radius: [dp(5), dp(5), 0, 0] if root.orientation == 'vertical' else [dp(5), 0, 0, dp(5)]
+        size_hint_y: None if root.orientation == 'vertical' else 1
+        height: dp(90) if root.orientation == 'vertical' else 0
+    MDBoxLayout:
+        orientation: 'vertical'
+        spacing: 0 if root.orientation == 'vertical' else dp(20)
+        adaptive_height: True
+        pos_hint: {'center_y': .5}
+        MDLabel:
+            text: root.title
+            adaptive_height: True
+            font_size: sp(14)
+            padding: [dp(10), dp(10)]
+        MDTextButton:
+            text: "[color=#303F9F]View article[/color]"
+            padding: [dp(10), dp(10)]
+            markup: True
+
+
+<HomeMainScreen>:
+    MDBoxLayout:
+        orientation: 'vertical'
+        md_bg_color: 1,1,1,1
+        MDToolbar:
+            title: "Home"
+            elevation: 0
+            md_bg_color: 1,1,1,1
+            specific_text_color: app.theme_cls.primary_dark
+            pos_hint: {"top": 1}
+            left_action_items: [["menu", lambda x:x]]
+            right_action_items: [["bell", lambda x:x], ["basket", lambda x:x]]
+        ScrollView:
+            always_overscroll: False
+            MDBoxLayout:
+                adaptive_height: True
+                orientation: 'vertical'
+                MDCard:
+                    orientation: 'vertical'
+                    md_bg_color: 1,1,1,1
+                    size_hint_y: None
+                    height: self.minimum_height
+                    spacing: dp(15)
+                    MDTextField:
+                        hint_text: "What are you looking for?"
+                        size_hint_x: None
+                        width: root.width - dp(80)
+                        mode: "rectangle"
+                        pos_hint: {'center_x': .5}
+                        icon_right: "magnify-plus-outline"
+                        icon_right_color: 1,1,1,1
+                    MDBoxLayout:
+                        adaptive_height: True
+                        canvas:
+                            Color:
+                                rgb: app.theme_cls.primary_dark
+                            Line:
+                                points: [self.center_x, self.top - dp(10), self.center_x, self.y + dp(10)]
+                                width: sp(1)
+                        Space:
+                        MDRectangleFlatIconButton:
+                            icon: "diamond"
+                            text: "Beauty"
+                            theme_text_color: "Custom"
+                            text_color: app.theme_cls.primary_dark
+                            line_color: 1, 1, 1, 1
+                            icon_color: app.theme_cls.primary_dark
+                        Space:
+                        MDRectangleFlatIconButton:
+                            icon: "shopping"
+                            text: "Fashion"
+                            theme_text_color: "Custom"
+                            text_color: app.theme_cls.primary_dark
+                            line_color: 1, 1, 1, 1
+                            icon_color: app.theme_cls.primary_dark
+                        Space:
+                    Space:
+                MDBoxLayout:
+                    orientation: 'vertical'
+                    adaptive_height: True
+                    padding: dp(20), dp(15)
+                    Item:
+                        source: 'assets/image-01.jpg'
+                        title: 'Ice cream is made with carrageenan...'
+                    MDGridLayout:
+                        adaptive_height: True
+                        cols: 2
+                        spacing: dp(10)
+                        padding: 0, dp(20)
+                        Item:
+                            source: 'assets/image-02.png'
+                            title: 'Is makeup one of your daily esse...'
+                            orientation: 'vertical'
+                        Item:
+                            source: 'assets/image-03.png'
+                            title: "Coffee is more than just a drink..."
+                            orientation: 'vertical'
+                    Item:
+                        source: 'assets/image-04.png'
+                        title: "Fashion is a popular style, especially in..."
+                    Space:
+                        height: dp(15)
+                    MDCard:
+                        size_hint_y: None
+                        ripple_behavior: True
+                        orientation: 'vertical'
+                        height: self.minimum_height
+                        radius: [dp(5), dp(5), dp(5), dp(5)]
+                        FitImage:
+                            source: "assets/image-05.png"
+                            size_hint_y: None
+                            height: dp(150)
+                            radius: [dp(5), dp(5), 0,0]
+                        MDBoxLayout:
+                            orientation: 'vertical'
+                            spacing: dp(5)
+                            padding: dp(15), dp(10)
+                            adaptive_height: True
+                            MDLabel:
+                                text: 'Argon is a great free UI packag...'
+                                adaptive_height: True
+                            MDTextButton:
+                                text: "[color=#303F9F]View article[/color]"
+                                markup: True
